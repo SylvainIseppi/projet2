@@ -69,7 +69,7 @@ public class RequeteClient {
 			e.printStackTrace();
 		}
 	}
-	public static  void DelClient(int id){
+	public static  ResultSet DelClient(int id){
 		try {
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("DELETE FROM `client` WHERE code="+id);
@@ -77,17 +77,12 @@ public class RequeteClient {
 	
 
 			/* Récupération des données du résultat de la requête de lecture */
-			while ( resultat.next() ) {
-			    int idclient = resultat.getInt( "code" );
-			    String nom = resultat.getString( "nom" );
-			    String prenom = resultat.getString( "prenom" );
-			    System.out.println("l'utilisateur numéro "+idclient+" a pour prenom "+prenom+" et nom "+nom);
-			    /* Traiter ici les valeurs récupérées. */
-			}
+			return resultat;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 	public static  void UpdateClient(int id,boolean carte,String prenom,String nom,String adresse,int fixe,int mobile,String mail,String remarque){
 		Date date =new Date();
