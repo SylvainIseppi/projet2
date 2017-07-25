@@ -132,6 +132,10 @@ public class Accueil extends JFrame {
 		panelBoutons.add(btnClient, "cell 0 1");
 		
 		JButton btnStatistique = new JButton("");
+		btnStatistique.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnStatistique.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/Diagram-128.png")));
 		panelBoutons.add(btnStatistique, "cell 1 1");
 		
