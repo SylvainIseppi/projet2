@@ -120,13 +120,8 @@ public class Accueil extends JFrame {
 		panelBoutons.setLayout(new MigLayout("", "[][][]", "[][][]"));
 		
 		JButton btnArticle = new JButton("");
-		btnArticle.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panelBoutons.setLayout(new MigLayout("", "[1px]", "[1px]"));
 		btnArticle.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/Product-128.png")));
-		panelBoutons.add(btnArticle, "cell 0 0,grow");
+		panelBoutons.add(btnArticle, "cell 1 0");
 		
 		JButton btnClient = new JButton("");
 		btnClient.addActionListener(new ActionListener() {
@@ -134,30 +129,18 @@ public class Accueil extends JFrame {
 			}
 		});
 		btnClient.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/People-128.png")));
-		panelBoutons.add(btnClient, "cell 0 0,grow");
+		panelBoutons.add(btnClient, "cell 0 1");
 		
 		JButton btnStatistique = new JButton("");
-		btnStatistique.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnStatistique.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/Diagram-128.png")));
-		panelBoutons.add(btnStatistique, "cell 0 0,grow");
+		panelBoutons.add(btnStatistique, "cell 1 1");
 		
 		JButton btnCommande = new JButton("");
-		btnCommande.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnCommande.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/Shopping-Bag-128.png")));
-		panelBoutons.add(btnCommande, "cell 0 0,grow");
+		panelBoutons.add(btnCommande, "cell 2 1");
 		
 		JButton btnParametres = new JButton("");
-		btnParametres.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnParametres.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/Settings-02-128.png")));
-		panelBoutons.add(btnParametres, "cell 0 0,grow");
+		panelBoutons.add(btnParametres, "cell 1 2");
 	}
 }
