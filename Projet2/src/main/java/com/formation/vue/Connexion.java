@@ -100,7 +100,7 @@ public class Connexion extends JFrame {
 				for (char unchar : passwordField.getPassword()) {
 					mdp+=unchar;
 				}
-				RequeteConnexion.getUser(textUser.getText(),mdp);
+				RequeteConnexion.getUser(textUser.getText(), mdp);
 			}
 		});
 		btnValider.setFont(new Font("Tahoma", Font.PLAIN, 12));

@@ -1,5 +1,6 @@
 package com.formation.requete;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,12 +10,14 @@ import javax.swing.JOptionPane;
 
 import com.formation.basesql.ConnexionBdd;
 import com.formation.objet.User;
+import com.formation.vue.Accueil;
 import com.formation.vue.Connexion;
 
 public class RequeteConnexion {
 	static Connection connexion=ConnexionBdd.getInstance();
 	public static  void getUser(String login, String mdp){
 		try {
+			System.out.println(login + mdp);
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("select login,role from user where login='"+login+"' and pass='"+mdp+"'");
 			/* Exécution d'une requête de lecture */
@@ -25,6 +28,8 @@ public class RequeteConnexion {
 				System.out.println("connexion ok");
 				User droit=User.getUser(resultat.getInt( "role" ), resultat.getString( "login" ));
 				System.out.println("blabla");
+				Accueil a = new Accueil();
+				a.setVisible(true);
 
 			}
 			else{
