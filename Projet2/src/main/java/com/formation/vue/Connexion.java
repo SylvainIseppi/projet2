@@ -100,7 +100,15 @@ public class Connexion extends JFrame {
 				for (char unchar : passwordField.getPassword()) {
 					mdp+=unchar;
 				}
-				RequeteConnexion.getUser(textUser.getText(), mdp);
+				boolean co=RequeteConnexion.getUser(textUser.getText(), mdp);
+				if(co){
+					Accueil a = new Accueil();
+					a.setVisible(true);
+					fermeture();
+				}
+				else{
+					erreurCo();
+				}
 			}
 		});
 		btnValider.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -163,5 +171,9 @@ public class Connexion extends JFrame {
 	}
 	public  void erreurCo(){
 		JOptionPane.showMessageDialog(this,"Erreur de connexion");
+	}
+	
+	public void fermeture(){
+		this.setVisible(false);
 	}
 }

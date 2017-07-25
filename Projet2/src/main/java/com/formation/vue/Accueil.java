@@ -80,6 +80,7 @@ public class Accueil extends JFrame {
 		JButton btnQuitter = new JButton("Quitter");
 		btnQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		btnQuitter.setFont(new Font("Tahoma", Font.PLAIN, 12));
