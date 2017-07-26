@@ -78,6 +78,14 @@ public class Clients extends JFrame {
 		panelWest.add(lblClient, "cell 0 0");
 		
 		JButton btnAjouter = new JButton("Ajouter        ");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				contentPane.setVisible(false);
+				AjoutClient ac=new AjoutClient();
+				setContentPane(ac);
+				
+			}
+		});
 		btnAjouter.setBackground(new Color(0, 153, 255));
 		btnAjouter.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAjouter.setForeground(Color.WHITE);
