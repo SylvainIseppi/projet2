@@ -14,9 +14,9 @@ import com.formation.basesql.ConnexionBdd;
 
 
 public class RequeteClient {
-	static Connection connexion=ConnexionBdd.getInstance();
+	 Connection connexion=ConnexionBdd.getInstance();
 	
-	public  static ResultSet getAllClient(){
+	public   ResultSet getAllClient(){
 		try {
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("select * from client");
@@ -31,7 +31,7 @@ public class RequeteClient {
 		}
 		return null;
 	}
-	public static  ResultSet getUnClient(int id){
+	public   ResultSet getUnClient(int id){
 		try {
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("select * from client where code="+id);
@@ -46,7 +46,7 @@ public class RequeteClient {
 		}
 		return null;
 	}
-	public static  ResultSet AjoutClient(boolean carte,String prenom,String nom,String adresse,int fixe,int mobile,String mail,String remarque){
+	public   ResultSet AjoutClient(boolean carte,String prenom,String nom,String adresse,int fixe,int mobile,String mail,String remarque){
 		Date date =new Date();
 			
 		try {
@@ -61,7 +61,7 @@ public class RequeteClient {
 		}
 		return null;
 	}
-	public static  ResultSet DelClient(int id){
+	public   ResultSet DelClient(int id){
 		try {
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("DELETE FROM `client` WHERE code="+id);
@@ -76,7 +76,7 @@ public class RequeteClient {
 		}
 		return null;
 	}
-	public static  void UpdateClient(int id,boolean carte,String prenom,String nom,String adresse,int fixe,int mobile,String mail,String remarque){
+	public  void UpdateClient(int id,boolean carte,String prenom,String nom,String adresse,int fixe,int mobile,String mail,String remarque){
 		Date date =new Date();
 			
 		try {

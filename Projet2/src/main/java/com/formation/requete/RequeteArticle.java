@@ -8,8 +8,8 @@ import java.sql.Statement;
 import com.formation.basesql.ConnexionBdd;
 
 public class RequeteArticle {
-	static Connection connexion = ConnexionBdd.getInstance();
-	public  static ResultSet getAllArticle(){
+	Connection connexion = ConnexionBdd.getInstance();
+	public ResultSet getAllArticle(){
 		try {
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("select * from article");
@@ -24,7 +24,7 @@ public class RequeteArticle {
 		}
 		return null;
 	}
-	public static  ResultSet getUnArticle(int id){
+	public  ResultSet getUnArticle(int id){
 		try {
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("select * from article where id="+id);
@@ -39,7 +39,7 @@ public class RequeteArticle {
 		}
 		return null;
 	}
-	public static  ResultSet delArticle(int id){
+	public  ResultSet delArticle(int id){
 		try {
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("DELETE FROM `article` WHERE id="+id);
@@ -54,10 +54,10 @@ public class RequeteArticle {
 		}
 		return null;
 	}
-	public static  ResultSet addArticle(int codeCat, String desi,int quantiteStock,int prixUnitaire){
+	public   ResultSet addArticle(int codeCat,String categorie, String desi,int quantiteStock,int prixUnitaire){
 		try {
 			Statement state= connexion.createStatement();
-			ResultSet resultat= state.executeQuery("INSERT INTO `article`(`codeCategorie`, `designation`, `quantitestock`, `prixUnitaire`) VALUES ("+codeCat+",'"+desi+"',"+quantiteStock+","+prixUnitaire+")");
+			ResultSet resultat= state.executeQuery("INSERT INTO `article`(`codeCategorie`,`categorie`, `designation`, `quantitestock`, `prixUnitaire`) VALUES ("+codeCat+",'"+categorie+"','"+desi+"',"+quantiteStock+","+prixUnitaire+")");
 			/* Exécution d'une requête de lecture */
 	
 
@@ -69,7 +69,7 @@ public class RequeteArticle {
 		}
 		return null;
 	}
-	public static  ResultSet updateArticle(int codeCat, String desi,int quantiteStock,int prixUnitaire ,int id){
+	public   ResultSet updateArticle(int codeCat, String desi,int quantiteStock,int prixUnitaire ,int id){
 		try {
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("UPDATE `article` SET `codeCategorie`="+codeCat+",`designation`='"+desi+"',`quantitestock`="+quantiteStock+",`prixUnitaire`="+prixUnitaire+" WHERE id="+id+")");

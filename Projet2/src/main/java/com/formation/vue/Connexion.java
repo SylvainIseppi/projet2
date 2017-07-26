@@ -96,11 +96,12 @@ public class Connexion extends JFrame {
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				RequeteConnexion r= new RequeteConnexion();
 				String mdp="";
 				for (char unchar : passwordField.getPassword()) {
 					mdp+=unchar;
 				}
-				boolean co=RequeteConnexion.getUser(textUser.getText(), mdp);
+				boolean co=r.getUser(textUser.getText(), mdp);
 				if(co){
 					Accueil a = new Accueil();
 					a.setVisible(true);

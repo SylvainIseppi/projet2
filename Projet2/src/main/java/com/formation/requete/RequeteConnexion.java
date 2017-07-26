@@ -25,8 +25,8 @@ import com.formation.vue.Accueil;
 import com.formation.vue.Connexion;
 
 public class RequeteConnexion {
-	static Connection connexion=ConnexionBdd.getInstance();
-	public static  boolean getUser(String login, String mdp){
+	 Connection connexion=ConnexionBdd.getInstance();
+	public   boolean getUser(String login, String mdp){
 		
 		try {
 			System.out.println(login + mdp);
