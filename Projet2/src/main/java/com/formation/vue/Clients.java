@@ -149,7 +149,7 @@ public class Clients extends JFrame {
 		panelWest.add(btnAccueil, "cell 0 15");
 		
 		JPanel panelClients = new JPanel();
-		panelClients.setBackground(new Color(204, 255, 255));
+		panelClients.setBackground(new Color(102, 204, 255));
 		contentPane.add(panelClients, BorderLayout.CENTER);
 		panelClients.setLayout(null);
 		
@@ -166,7 +166,7 @@ public class Clients extends JFrame {
 		panelClients.add(lblListe);
 		
 		JPanel panelClientRens = new JPanel();
-		panelClientRens.setBackground(new Color(204, 255, 255));
+		panelClientRens.setBackground(new Color(102, 204, 255));
 		panelClientRens.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panelClientRens.setBounds(10, 11, 706, 286);
 		panelClients.add(panelClientRens);
@@ -198,7 +198,7 @@ public class Clients extends JFrame {
 		
 		JCheckBox chckbxCarteDeFidelite = new JCheckBox("Carte de fid\u00E9lit\u00E9");
 		chckbxCarteDeFidelite.setEnabled(false);
-		chckbxCarteDeFidelite.setBackground(new Color(204, 255, 255));
+		chckbxCarteDeFidelite.setBackground(new Color(102, 204, 255));
 		chckbxCarteDeFidelite.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		chckbxCarteDeFidelite.setHorizontalAlignment(SwingConstants.CENTER);
 		chckbxCarteDeFidelite.setBounds(565, 13, 131, 23);
