@@ -31,7 +31,7 @@ public class RequeteClient {
 		}
 		return null;
 	}
-	public static  ResulSet getUnClient(int id){
+	public static  ResultSet getUnClient(int id){
 		try {
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("select * from client where code="+id);
@@ -44,6 +44,7 @@ public class RequeteClient {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 	public static  ResultSet AjoutClient(boolean carte,String prenom,String nom,String adresse,int fixe,int mobile,String mail,String remarque){
 		Date date =new Date();
