@@ -1,4 +1,4 @@
-package com.formation.requete;
+package com.formation.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ import java.util.Date;
 import com.formation.basesql.ConnexionBdd;
 
 
-public class RequeteClient {
+public class ClientDao {
 	 Connection connexion=ConnexionBdd.getInstance();
 	
 	public   ResultSet getAllClient(){

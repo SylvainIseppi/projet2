@@ -1,4 +1,4 @@
-package com.formation.requete;
+package com.formation.dao;
 
 
 import java.sql.Connection;
@@ -24,7 +24,7 @@ import com.formation.objet.User;
 import com.formation.vue.Accueil;
 import com.formation.vue.Connexion;
 
-public class RequeteConnexion {
+public class ConnexionDao {
 	 Connection connexion=ConnexionBdd.getInstance();
 	public   boolean getUser(String login, String mdp){
 		

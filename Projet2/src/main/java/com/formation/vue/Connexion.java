@@ -19,7 +19,7 @@ import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 
-import com.formation.requete.RequeteConnexion;
+import com.formation.dao.ConnexionDao;
 
 import javax.swing.JTextPane;
 import javax.swing.JTextField;
@@ -96,7 +96,7 @@ public class Connexion extends JFrame {
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RequeteConnexion r= new RequeteConnexion();
+				ConnexionDao r= new ConnexionDao();
 				String mdp="";
 				for (char unchar : passwordField.getPassword()) {
 					mdp+=unchar;

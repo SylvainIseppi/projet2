@@ -1,4 +1,4 @@
-package com.formation.requete;
+package com.formation.dao;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import com.formation.basesql.ConnexionBdd;
 
-public class RequeteArticle {
+public class ArticleDao {
 	Connection connexion = ConnexionBdd.getInstance();
 	public ResultSet getAllArticle(){
 		try {

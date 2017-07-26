@@ -134,7 +134,6 @@ public class Accueil extends JFrame {
 		JButton btnClient = new JButton("");
 		btnClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				Clients c= new Clients();
 				c.setVisible(true);
 				fermerAccueil();
