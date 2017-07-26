@@ -1,6 +1,6 @@
 package com.formation.vue;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,13 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import java.awt.GridBagLayout;
 import javax.swing.JButton;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+
 import java.awt.Color;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
 
 import com.formation.dao.ConnexionDao;
 
@@ -25,6 +21,7 @@ import javax.swing.JTextPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class Connexion extends JFrame {
@@ -86,6 +83,7 @@ public class Connexion extends JFrame {
 		JButton btnQuitter = new JButton("Quitter");
 		btnQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				fermeture();
 			}
 		});
 		btnQuitter.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -103,6 +101,8 @@ public class Connexion extends JFrame {
 				}
 				boolean co=r.getUser(textUser.getText(), mdp);
 				if(co){
+					Date date =new Date();
+					System.out.println(INSERT INTO `client`(`dateCreation`, `cartedefidélité`, `prenom`, `nom`, `adresse`, `fixe`, `mobile`, `email`, `remarques`) VALUES ("+new SimpleDateFormat("yyyy-MM-dd").format(date)+","+carte+","+prenom+","+nom+","+adresse+","+fixe+","+mobile+","+mail+","+remarque+");
 					Accueil a = new Accueil();
 					a.setVisible(true);
 					fermeture();

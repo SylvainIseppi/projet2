@@ -29,7 +29,6 @@ public class ConnexionDao {
 	public   boolean getUser(String login, String mdp){
 		
 		try {
-			System.out.println(login + mdp);
 			Statement state= connexion.createStatement();
 			ResultSet resultat= state.executeQuery("select login,role from user where login='"+login+"' and pass='"+mdp+"'");
 			/* Exécution d'une requête de lecture */
