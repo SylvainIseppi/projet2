@@ -101,8 +101,6 @@ public class Connexion extends JFrame {
 				}
 				boolean co=r.getUser(textUser.getText(), mdp);
 				if(co){
-					Date date =new Date();
-					System.out.println(INSERT INTO `client`(`dateCreation`, `cartedefidélité`, `prenom`, `nom`, `adresse`, `fixe`, `mobile`, `email`, `remarques`) VALUES ("+new SimpleDateFormat("yyyy-MM-dd").format(date)+","+carte+","+prenom+","+nom+","+adresse+","+fixe+","+mobile+","+mail+","+remarque+");
 					Accueil a = new Accueil();
 					a.setVisible(true);
 					fermeture();
