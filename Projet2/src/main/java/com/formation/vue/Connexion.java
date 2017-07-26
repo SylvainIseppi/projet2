@@ -154,6 +154,8 @@ public class Connexion extends JFrame {
 		panelGlobal.add(passwordField);
 		
 		JTextPane txtpnInfo = new JTextPane();
+		txtpnInfo.setEnabled(false);
+		txtpnInfo.setEditable(false);
 		txtpnInfo.setForeground(Color.GRAY);
 		txtpnInfo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		txtpnInfo.setText("Veuillez saisir\r\nle nom de l'utilisateur et le mot de passe\r\npour acc\u00E9der \u00E0 l'application");

@@ -30,6 +30,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JSpinner;
 import javax.swing.JToolBar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Commande extends JFrame {
 
@@ -147,6 +149,13 @@ public class Commande extends JFrame {
 		panelWest.add(btnExport);
 		
 		JButton btnAccueil = new JButton("Accueil");
+		btnAccueil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Accueil a=new Accueil();
+				a.setVisible(true);
+				fermerCommande();
+			}
+		});
 		btnAccueil.setBackground(new Color(255, 153, 0));
 		btnAccueil.setForeground(Color.WHITE);
 		btnAccueil.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -328,5 +337,8 @@ public class Commande extends JFrame {
 		btnValiderCommande_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnValiderCommande_1.setBounds(405, 556, 216, 34);
 		panelCommande.add(btnValiderCommande_1);
+	}
+	private void fermerCommande(){
+		this.setVisible(false);
 	}
 }

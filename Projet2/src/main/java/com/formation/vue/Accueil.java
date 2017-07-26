@@ -151,6 +151,13 @@ public class Accueil extends JFrame {
 		panelBoutons.add(btnStatistique, "cell 1 1");
 		
 		JButton btnCommande = new JButton("");
+		btnCommande.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Commande c=new Commande();
+				c.setVisible(true);
+				fermerAccueil();
+			}
+		});
 		btnCommande.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/Shopping-Bag-128.png")));
 		panelBoutons.add(btnCommande, "cell 2 1");
 		
