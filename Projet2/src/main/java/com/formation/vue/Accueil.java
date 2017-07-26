@@ -127,6 +127,10 @@ public class Accueil extends JFrame {
 		JButton btnClient = new JButton("");
 		btnClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				Clients c= new Clients();
+				c.setVisible(true);
+				fermerAccueil();
 			}
 		});
 		btnClient.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/People-128.png")));
@@ -147,5 +151,8 @@ public class Accueil extends JFrame {
 		JButton btnParametres = new JButton("");
 		btnParametres.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/Settings-02-128.png")));
 		panelBoutons.add(btnParametres, "cell 1 2");
+	}
+	public void fermerAccueil(){
+		this.setVisible(false);
 	}
 }
