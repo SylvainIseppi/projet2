@@ -64,12 +64,13 @@ public class Clients extends JFrame {
 		setBounds(100, 100, 926, 650);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JPanel panelWest = new JPanel();
+		panelWest.setBounds(0, 0, 184, 611);
 		panelWest.setBackground(new Color(0, 153, 255));
-		contentPane.add(panelWest, BorderLayout.WEST);
+		contentPane.add(panelWest);
 		panelWest.setLayout(new MigLayout("", "[]", "[][][][][][][][][][][][][25.00][][][][][][][][]"));
 		
 		JLabel lblClient = new JLabel("Clients");
@@ -149,8 +150,9 @@ public class Clients extends JFrame {
 		panelWest.add(btnAccueil, "cell 0 15");
 		
 		JPanel panelClients = new JPanel();
+		panelClients.setBounds(184, 0, 726, 611);
 		panelClients.setBackground(new Color(102, 204, 255));
-		contentPane.add(panelClients, BorderLayout.CENTER);
+		contentPane.add(panelClients);
 		panelClients.setLayout(null);
 		
 		JScrollPane scrollClients = new JScrollPane();
@@ -197,6 +199,7 @@ public class Clients extends JFrame {
 		textCreeLe.setColumns(10);
 		
 		JCheckBox chckbxCarteDeFidelite = new JCheckBox("Carte de fid\u00E9lit\u00E9");
+		chckbxCarteDeFidelite.setForeground(Color.BLACK);
 		chckbxCarteDeFidelite.setEnabled(false);
 		chckbxCarteDeFidelite.setBackground(new Color(102, 204, 255));
 		chckbxCarteDeFidelite.setFont(new Font("Tahoma", Font.PLAIN, 12));

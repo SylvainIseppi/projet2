@@ -13,9 +13,9 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
 
 public class AjoutClient extends JPanel {
-	private JTextField textCreele;
 	private JTextField textCode;
 	private JTextField textPrenom;
 	private JTextField textAdresse;
@@ -34,7 +34,7 @@ public class AjoutClient extends JPanel {
 		
 		JPanel panelMenu = new JPanel();
 		panelMenu.setBackground(new Color(0, 153, 255));
-		panelMenu.setBounds(0, 0, 195, 650);
+		panelMenu.setBounds(0, 0, 195, 622);
 		add(panelMenu);
 		panelMenu.setLayout(null);
 		
@@ -60,7 +60,7 @@ public class AjoutClient extends JPanel {
 		btnAnnuler.setIcon(new ImageIcon(AjoutClient.class.getResource("/images/gestion/Cancel-48.png")));
 		btnAnnuler.setForeground(Color.WHITE);
 		btnAnnuler.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAnnuler.setBounds(10, 596, 175, 43);
+		btnAnnuler.setBounds(10, 557, 175, 43);
 		panelMenu.add(btnAnnuler);
 		
 		JButton btnApercu = new JButton("Aper\u00E7u");
@@ -92,50 +92,49 @@ public class AjoutClient extends JPanel {
 		
 		JPanel panelAjoutClient = new JPanel();
 		panelAjoutClient.setBackground(new Color(102, 204, 255));
-		panelAjoutClient.setBounds(195, 0, 730, 650);
+		panelAjoutClient.setBounds(195, 0, 720, 622);
 		add(panelAjoutClient);
 		panelAjoutClient.setLayout(null);
 		
 		JPanel panelClient = new JPanel();
 		panelClient.setBackground(new Color(102, 204, 255));
 		panelClient.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Client", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
-		panelClient.setBounds(10, 11, 710, 74);
+		panelClient.setBounds(10, 11, 693, 74);
 		panelAjoutClient.add(panelClient);
 		panelClient.setLayout(null);
 		
 		textCode = new JTextField();
-		textCode.setBounds(107, 31, 198, 20);
+		textCode.setBounds(93, 31, 198, 20);
 		panelClient.add(textCode);
 		textCode.setColumns(10);
 		
 		JLabel lblCreele = new JLabel("Cr\u00E9e le");
 		lblCreele.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCreele.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblCreele.setBounds(315, 29, 73, 23);
+		lblCreele.setBounds(301, 29, 73, 23);
 		panelClient.add(lblCreele);
-		
-		textCreele = new JTextField();
-		textCreele.setBounds(398, 31, 177, 20);
-		panelClient.add(textCreele);
-		textCreele.setColumns(10);
 		
 		JCheckBox chckbxCarteDeFidelite = new JCheckBox("Carte de Fid\u00E9lit\u00E9");
 		chckbxCarteDeFidelite.setHorizontalAlignment(SwingConstants.CENTER);
 		chckbxCarteDeFidelite.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		chckbxCarteDeFidelite.setBackground(new Color(102, 204, 255));
-		chckbxCarteDeFidelite.setBounds(581, 29, 123, 23);
+		chckbxCarteDeFidelite.setBounds(567, 29, 123, 23);
 		panelClient.add(chckbxCarteDeFidelite);
 		
 		JLabel lblCode = new JLabel("Code");
 		lblCode.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblCode.setBounds(24, 29, 73, 23);
+		lblCode.setBounds(10, 29, 73, 23);
 		panelClient.add(lblCode);
 		
+		JFormattedTextField formattedTCreele = new JFormattedTextField();
+		formattedTCreele.setBounds(384, 31, 177, 20);
+		panelClient.add(formattedTCreele);
+		
 		JPanel panelEtatCivil = new JPanel();
-		panelEtatCivil.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Etat Civil", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelEtatCivil.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Etat Civil", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
 		panelEtatCivil.setBackground(new Color(102, 204, 255));
-		panelEtatCivil.setBounds(10, 96, 710, 106);
+		panelEtatCivil.setBounds(10, 96, 693, 106);
 		panelAjoutClient.add(panelEtatCivil);
 		panelEtatCivil.setLayout(null);
 		
@@ -146,7 +145,7 @@ public class AjoutClient extends JPanel {
 		panelEtatCivil.add(lblPrenom);
 		
 		textPrenom = new JTextField();
-		textPrenom.setBounds(93, 24, 260, 20);
+		textPrenom.setBounds(77, 24, 260, 20);
 		panelEtatCivil.add(textPrenom);
 		textPrenom.setColumns(10);
 		
@@ -157,7 +156,7 @@ public class AjoutClient extends JPanel {
 		panelEtatCivil.add(lblAdresse);
 		
 		textAdresse = new JTextField();
-		textAdresse.setBounds(93, 50, 607, 20);
+		textAdresse.setBounds(77, 50, 607, 20);
 		panelEtatCivil.add(textAdresse);
 		textAdresse.setColumns(10);
 		
@@ -168,36 +167,36 @@ public class AjoutClient extends JPanel {
 		panelEtatCivil.add(lblCodePostal);
 		
 		textField = new JTextField();
-		textField.setBounds(93, 76, 260, 20);
+		textField.setBounds(77, 76, 260, 20);
 		panelEtatCivil.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNom = new JLabel("Nom");
 		lblNom.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNom.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNom.setBounds(363, 23, 70, 20);
+		lblNom.setBounds(347, 23, 70, 20);
 		panelEtatCivil.add(lblNom);
 		
 		textNom = new JTextField();
-		textNom.setBounds(443, 24, 257, 20);
+		textNom.setBounds(427, 24, 257, 20);
 		panelEtatCivil.add(textNom);
 		textNom.setColumns(10);
 		
 		JLabel lblVille = new JLabel("Ville");
 		lblVille.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblVille.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblVille.setBounds(363, 75, 70, 20);
+		lblVille.setBounds(347, 75, 70, 20);
 		panelEtatCivil.add(lblVille);
 		
 		textVille = new JTextField();
-		textVille.setBounds(443, 76, 257, 20);
+		textVille.setBounds(427, 76, 257, 20);
 		panelEtatCivil.add(textVille);
 		textVille.setColumns(10);
 		
 		JPanel panelCoordonnees = new JPanel();
 		panelCoordonnees.setBackground(new Color(102, 204, 255));
-		panelCoordonnees.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Coordonn\u00E9es", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelCoordonnees.setBounds(10, 213, 710, 95);
+		panelCoordonnees.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Coordonn\u00E9es", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
+		panelCoordonnees.setBounds(10, 213, 693, 95);
 		panelAjoutClient.add(panelCoordonnees);
 		panelCoordonnees.setLayout(null);
 		
@@ -207,18 +206,18 @@ public class AjoutClient extends JPanel {
 		panelCoordonnees.add(lblNumFixe);
 		
 		textNumFixe = new JTextField();
-		textNumFixe.setBounds(58, 25, 273, 20);
+		textNumFixe.setBounds(46, 25, 273, 20);
 		panelCoordonnees.add(textNumFixe);
 		textNumFixe.setColumns(10);
 		
 		JLabel lblNumMobile = new JLabel("Mobile");
 		lblNumMobile.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNumMobile.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNumMobile.setBounds(341, 24, 55, 20);
+		lblNumMobile.setBounds(329, 24, 55, 20);
 		panelCoordonnees.add(lblNumMobile);
 		
 		textNumMobile = new JTextField();
-		textNumMobile.setBounds(406, 25, 294, 20);
+		textNumMobile.setBounds(394, 25, 294, 20);
 		panelCoordonnees.add(textNumMobile);
 		textNumMobile.setColumns(10);
 		
@@ -228,19 +227,19 @@ public class AjoutClient extends JPanel {
 		panelCoordonnees.add(lblEmail);
 		
 		textEmail = new JTextField();
-		textEmail.setBounds(58, 56, 642, 20);
+		textEmail.setBounds(46, 56, 642, 20);
 		panelCoordonnees.add(textEmail);
 		textEmail.setColumns(10);
 		
 		JPanel panelRemarques = new JPanel();
 		panelRemarques.setBackground(new Color(102, 204, 255));
-		panelRemarques.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Remarques", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelRemarques.setBounds(10, 319, 710, 320);
+		panelRemarques.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Remarques", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
+		panelRemarques.setBounds(10, 319, 693, 290);
 		panelAjoutClient.add(panelRemarques);
 		panelRemarques.setLayout(null);
 		
 		JScrollPane scrollRemarques = new JScrollPane();
-		scrollRemarques.setBounds(10, 22, 690, 287);
+		scrollRemarques.setBounds(10, 26, 673, 253);
 		panelRemarques.add(scrollRemarques);
 		
 		JTextArea textAreaRemarques = new JTextArea();
