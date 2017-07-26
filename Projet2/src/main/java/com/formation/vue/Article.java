@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.JSlider;
 import javax.swing.JRadioButton;
 import javax.swing.JToolBar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Article extends JFrame {
 
@@ -89,6 +91,13 @@ public class Article extends JFrame {
 		btnExport.setIcon(new ImageIcon(Article.class.getResource("/images/gestion/Data-Export-48.png")));
 		
 		JButton btnAccueil = new JButton("Accueil");
+		btnAccueil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Accueil a=new Accueil();
+				a.setVisible(true);
+				fermerArticle();
+			}
+		});
 		btnAccueil.setBackground(new Color(102, 153, 0));
 		btnAccueil.setForeground(Color.WHITE);
 		btnAccueil.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -268,5 +277,8 @@ public class Article extends JFrame {
 		rdbtnCategorie.setBackground(new Color(204, 255, 153));
 		rdbtnCategorie.setBounds(231, 565, 89, 23);
 		panelArticle.add(rdbtnCategorie);
+	}
+	private void fermerArticle(){
+		this.setVisible(false);
 	}
 }

@@ -80,7 +80,7 @@ public class Accueil extends JFrame {
 		JButton btnQuitter = new JButton("Quitter");
 		btnQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				fermerAccueil();
 			}
 		});
 		btnQuitter.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -121,6 +121,13 @@ public class Accueil extends JFrame {
 		panelBoutons.setLayout(new MigLayout("", "[][][]", "[][][]"));
 		
 		JButton btnArticle = new JButton("");
+		btnArticle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Article a=new Article();
+				a.setVisible(true);
+				fermerAccueil();
+			}
+		});
 		btnArticle.setIcon(new ImageIcon(Accueil.class.getResource("/images/accueil/Product-128.png")));
 		panelBoutons.add(btnArticle, "cell 1 0");
 		

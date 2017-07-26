@@ -23,6 +23,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Clients extends JFrame {
 
@@ -125,6 +127,13 @@ public class Clients extends JFrame {
 		panelWest.add(btnExport, "cell 0 13");
 		
 		JButton btnAccueil = new JButton("Accueil          ");
+		btnAccueil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Accueil a=new Accueil();
+				a.setVisible(true);
+				fermerClient();
+			}
+		});
 		btnAccueil.setForeground(Color.WHITE);
 		btnAccueil.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAccueil.setBackground(new Color(0, 153, 255));
@@ -276,5 +285,8 @@ public class Clients extends JFrame {
 		JComboBox comboListe = new JComboBox();
 		comboListe.setBounds(150, 578, 81, 20);
 		panelClients.add(comboListe);
+	}
+	private void fermerClient(){
+		this.setVisible(false);
 	}
 }
