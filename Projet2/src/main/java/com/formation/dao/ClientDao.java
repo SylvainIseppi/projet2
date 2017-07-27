@@ -89,4 +89,17 @@ public class ClientDao {
 			e.printStackTrace();
 		}
 	}
+	public ResultSet searchUnClient(String nom){
+		try {
+			Statement state= connexion.createStatement();
+			ResultSet resultat= state.executeQuery("SELECT code FROM client where nom='"+nom+"'");
+			/* Exécution d'une requête de lecture */
+			/* Récupération des données du résultat de la requête de lecture */
+			return resultat;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

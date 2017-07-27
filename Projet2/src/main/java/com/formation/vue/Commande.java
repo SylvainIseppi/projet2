@@ -20,8 +20,12 @@ import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import java.awt.CardLayout;
 import java.awt.GridBagLayout;
+import java.awt.List;
 import java.awt.GridBagConstraints;
 import javax.swing.border.TitledBorder;
+
+import com.formation.controlleur.CommandeControlleur;
+
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import javax.swing.JList;
@@ -31,7 +35,11 @@ import javax.swing.JTable;
 import javax.swing.JSpinner;
 import javax.swing.JToolBar;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class Commande extends JFrame {
 
@@ -43,6 +51,15 @@ public class Commande extends JFrame {
 	private JTextField textCode;
 	private JTextField textMontant;
 	private JTextField textDesignation;
+	private String nom;
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
 	/**
 	 * Launch the application.
@@ -207,8 +224,27 @@ public class Commande extends JFrame {
 		panelInfos.add(lblNomDuClient);
 		
 		JComboBox comboNomClient = new JComboBox();
+		CommandeControlleur c=new CommandeControlleur();
+		comboNomClient.setModel(new DefaultComboBoxModel(c.lesClients()));
 		comboNomClient.setToolTipText("");
 		comboNomClient.setBounds(211, 54, 190, 20);
+		comboNomClient.addItemListener(
+				new ItemListener() {
+					
+					@Override
+					public void itemStateChanged(ItemEvent e) {
+						String nom="";
+						  if(e.getStateChange()==ItemEvent.SELECTED)
+		                    {
+		                        nom=comboNomClient.getSelectedItem().toString();
+		                        CommandeControlleur cc=new CommandeControlleur();
+		                       textCommandeencours.setText(cc.modifierLibelle(nom));
+		                       textDate.setText(cc.modifierDate(nom));
+		                    }
+					}
+				}
+		);
+		
 		panelInfos.add(comboNomClient);
 		
 		JPanel panelValCommande = new JPanel();

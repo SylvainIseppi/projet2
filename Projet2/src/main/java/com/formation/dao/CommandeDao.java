@@ -42,7 +42,8 @@ public class CommandeDao {
 	public   ResultSet getLastCommande(int idclient){
 		try {
 			Statement state= connexion.createStatement();
-			ResultSet resultat= state.executeQuery("select * from commande where idclient="+idclient+" and id = (select max(id) from commande where idclient="+idclient+"))");
+			System.out.println("select * from commande where idclient="+idclient+" and id = (select max(id) from commande where idclient="+idclient+")");
+			ResultSet resultat= state.executeQuery("select * from commande where idclient="+idclient+" and id = (select max(id) from commande where idclient="+idclient+")");
 			/* Exécution d'une requête de lecture */
 	
 
