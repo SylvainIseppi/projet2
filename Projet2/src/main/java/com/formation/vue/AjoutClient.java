@@ -39,7 +39,7 @@ public class AjoutClient extends JPanel {
 		panelMenu.setLayout(null);
 		
 		JLabel lblAjout = new JLabel("Ajout");
-		lblAjout.setBounds(10, 11, 160, 64);
+		lblAjout.setBounds(10, 11, 175, 64);
 		lblAjout.setIcon(new ImageIcon(AjoutClient.class.getResource("/images/gestion/client/User-Add-64.png")));
 		lblAjout.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAjout.setFont(new Font("Tahoma", Font.BOLD, 16));

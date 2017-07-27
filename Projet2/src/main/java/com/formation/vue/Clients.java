@@ -94,6 +94,13 @@ public class Clients extends JFrame {
 		panelWest.add(btnAjouter, "cell 0 1");
 		
 		JButton btnRechercher = new JButton("Rechercher  ");
+		btnRechercher.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				contentPane.setVisible(false);
+				RechercherClient rc = new RechercherClient();
+				setContentPane(rc);
+			}
+		});
 		btnRechercher.setIcon(new ImageIcon(Clients.class.getResource("/images/gestion/Search-48.png")));
 		btnRechercher.setBackground(new Color(0, 153, 255));
 		btnRechercher.setForeground(Color.WHITE);
@@ -155,18 +162,6 @@ public class Clients extends JFrame {
 		contentPane.add(panelClients);
 		panelClients.setLayout(null);
 		
-		JScrollPane scrollClients = new JScrollPane();
-		scrollClients.setBounds(10, 308, 706, 262);
-		panelClients.add(scrollClients);
-		
-		tableClients = new JTable();
-		scrollClients.setViewportView(tableClients);
-		
-		JLabel lblListe = new JLabel("Trier la liste par");
-		lblListe.setIcon(new ImageIcon(Clients.class.getResource("/images/gestion/Sort-Ascending-32.png")));
-		lblListe.setBounds(20, 581, 120, 14);
-		panelClients.add(lblListe);
-		
 		JPanel panelClientRens = new JPanel();
 		panelClientRens.setBackground(new Color(102, 204, 255));
 		panelClientRens.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -198,7 +193,7 @@ public class Clients extends JFrame {
 		panelClientRens.add(textCreeLe);
 		textCreeLe.setColumns(10);
 		
-		JCheckBox chckbxCarteDeFidelite = new JCheckBox("Carte de fid\u00E9lit\u00E9");
+		JCheckBox chckbxCarteDeFidelite = new JCheckBox("Carte de Fid\u00E9lit\u00E9");
 		chckbxCarteDeFidelite.setForeground(Color.BLACK);
 		chckbxCarteDeFidelite.setEnabled(false);
 		chckbxCarteDeFidelite.setBackground(new Color(102, 204, 255));
@@ -243,11 +238,23 @@ public class Clients extends JFrame {
 		panelClientRens.add(textAdresse);
 		textAdresse.setColumns(10);
 		
+		JLabel lblNumFixe = new JLabel("Fixe");
+		lblNumFixe.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNumFixe.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNumFixe.setBounds(10, 108, 74, 17);
+		panelClientRens.add(lblNumFixe);
+		
 		textNumFixe = new JTextField();
 		textNumFixe.setEnabled(false);
 		textNumFixe.setBounds(94, 107, 178, 20);
 		panelClientRens.add(textNumFixe);
 		textNumFixe.setColumns(10);
+		
+		JLabel lblNumMobile = new JLabel("Mobile");
+		lblNumMobile.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNumMobile.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNumMobile.setBounds(283, 104, 73, 25);
+		panelClientRens.add(lblNumMobile);
 		
 		textNumMobile = new JTextField();
 		textNumMobile.setEnabled(false);
@@ -255,37 +262,17 @@ public class Clients extends JFrame {
 		panelClientRens.add(textNumMobile);
 		textNumMobile.setColumns(10);
 		
-		textEmail = new JTextField();
-		textEmail.setEnabled(false);
-		textEmail.setBounds(94, 138, 602, 20);
-		panelClientRens.add(textEmail);
-		textEmail.setColumns(10);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(94, 169, 602, 106);
-		panelClientRens.add(scrollPane);
-		
-		JTextArea textAreaRemq = new JTextArea();
-		textAreaRemq.setEnabled(false);
-		scrollPane.setViewportView(textAreaRemq);
-		
-		JLabel lblNumFixe = new JLabel("Fixe");
-		lblNumFixe.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNumFixe.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNumFixe.setBounds(10, 108, 74, 17);
-		panelClientRens.add(lblNumFixe);
-		
-		JLabel lblMobile = new JLabel("Mobile");
-		lblMobile.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblMobile.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblMobile.setBounds(283, 104, 73, 25);
-		panelClientRens.add(lblMobile);
-		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblEmail.setBounds(11, 135, 73, 25);
 		panelClientRens.add(lblEmail);
+		
+		textEmail = new JTextField();
+		textEmail.setEnabled(false);
+		textEmail.setBounds(94, 138, 602, 20);
+		panelClientRens.add(textEmail);
+		textEmail.setColumns(10);
 		
 		JLabel lblRemarques = new JLabel("Remarques");
 		lblRemarques.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -293,8 +280,29 @@ public class Clients extends JFrame {
 		lblRemarques.setBounds(11, 168, 73, 25);
 		panelClientRens.add(lblRemarques);
 		
+		JScrollPane scrollRemarques = new JScrollPane();
+		scrollRemarques.setBounds(94, 169, 602, 106);
+		panelClientRens.add(scrollRemarques);
+		
+		JTextArea textAreaRemq = new JTextArea();
+		textAreaRemq.setEnabled(false);
+		scrollRemarques.setViewportView(textAreaRemq);
+		
+		JScrollPane scrollClients = new JScrollPane();
+		scrollClients.setBounds(10, 308, 706, 262);
+		panelClients.add(scrollClients);
+		
+		tableClients = new JTable();
+		scrollClients.setViewportView(tableClients);
+		
+		JLabel lblListe = new JLabel("Trier la liste par");
+		lblListe.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblListe.setIcon(new ImageIcon(Clients.class.getResource("/images/gestion/Sort-Ascending-32.png")));
+		lblListe.setBounds(20, 581, 126, 14);
+		panelClients.add(lblListe);
+		
 		JComboBox comboListe = new JComboBox();
-		comboListe.setBounds(150, 578, 81, 20);
+		comboListe.setBounds(156, 579, 81, 20);
 		panelClients.add(comboListe);
 	}
 	private void fermerClient(){
