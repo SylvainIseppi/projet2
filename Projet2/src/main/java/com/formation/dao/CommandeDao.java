@@ -42,7 +42,6 @@ public class CommandeDao {
 	public   ResultSet getLastCommande(int idclient){
 		try {
 			Statement state= connexion.createStatement();
-			System.out.println("select * from commande where idclient="+idclient+" and id = (select max(id) from commande where idclient="+idclient+")");
 			ResultSet resultat= state.executeQuery("select * from commande where idclient="+idclient+" and id = (select max(id) from commande where idclient="+idclient+")");
 			/* Exécution d'une requête de lecture */
 	
@@ -58,11 +57,9 @@ public class CommandeDao {
 	public   ResultSet detailCommande(int id){
 		try {
 			Statement state= connexion.createStatement();
-			ResultSet resultat= state.executeQuery("select * from commandecreer  where idcommande="+id+")");
+			System.out.println("select * from commandecreer,article  where idcommande="+id+" and article.id=commandecreer.idarticle");
+			ResultSet resultat= state.executeQuery("select * from commandecreer,article  where idcommande="+id+" and article.id=commandecreer.idarticle");
 			/* Exécution d'une requête de lecture */
-	
-
-			/* Récupération des données du résultat de la requête de lecture */
 			return resultat;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

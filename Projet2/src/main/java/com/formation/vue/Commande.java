@@ -37,9 +37,11 @@ import javax.swing.JToolBar;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 public class Commande extends JFrame {
 
@@ -234,12 +236,29 @@ public class Commande extends JFrame {
 					@Override
 					public void itemStateChanged(ItemEvent e) {
 						String nom="";
+						int idcommande=0;
 						  if(e.getStateChange()==ItemEvent.SELECTED)
 		                    {
 		                        nom=comboNomClient.getSelectedItem().toString();
 		                        CommandeControlleur cc=new CommandeControlleur();
+		                        if(cc.infoCommande(nom)!=null){
+		                        	try {
+										idcommande=cc.infoCommande(nom).getInt("id");
+										System.out.println(idcommande);
+									} catch (SQLException e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
+		                        }
 		                       textCommandeencours.setText(cc.modifierLibelle(nom));
 		                       textDate.setText(cc.modifierDate(nom));
+		                       
+//		                       table.setModel(new DefaultTableModel(
+//			                   			cc.getArticlesCommande(idcommande),
+//			                   			new String[] {
+//			                   				"code", "Code Categorie", "Designation", "Quantite", "Prix Unitaire", "Total"
+//			                   			}
+//			                   		));
 		                    }
 					}
 				}
@@ -347,6 +366,14 @@ public class Commande extends JFrame {
 		panelValCommande.add(scrollCommande);
 		
 		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				
+			},
+			new String[] {
+				"code", "Code Categorie", "Designation", "Quantite", "Prix Unitaire", "Total"
+			}
+		));
 		scrollCommande.setViewportView(table);
 		
 		JLabel lblModePaiement = new JLabel("Mode de Paiement");
