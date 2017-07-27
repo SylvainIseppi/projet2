@@ -25,6 +25,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
 
 public class Clients extends JFrame {
 
@@ -110,6 +111,13 @@ public class Clients extends JFrame {
 		panelWest.add(btnRechercher, "cell 0 2");
 		
 		JButton btnModifier = new JButton("Modifier        ");
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				contentPane.setVisible(false);
+				AjoutClient ac=new AjoutClient(cli);
+				setContentPane(ac);
+			}
+		});
 		btnModifier.setBackground(new Color(0, 153, 255));
 		btnModifier.setForeground(Color.WHITE);
 		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -295,6 +303,17 @@ public class Clients extends JFrame {
 		panelClients.add(scrollClients);
 		
 		tableClients = new JTable();
+		tableClients.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Code", "Nom", "Pr\u00E9nom", "Carte Fid\u00E9lit\u00E9", "Date Cr\u00E9ation"
+			}
+		));
+		tableClients.getColumnModel().getColumn(1).setPreferredWidth(106);
+		tableClients.getColumnModel().getColumn(2).setPreferredWidth(106);
+		tableClients.getColumnModel().getColumn(3).setPreferredWidth(84);
+		tableClients.getColumnModel().getColumn(4).setPreferredWidth(93);
 		scrollClients.setViewportView(tableClients);
 		
 		JLabel lblListe = new JLabel("Trier la liste par");
