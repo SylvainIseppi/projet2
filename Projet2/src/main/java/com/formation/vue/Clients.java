@@ -74,7 +74,7 @@ public class Clients extends JFrame {
 		panelWest.setLayout(new MigLayout("", "[]", "[][][][][][][][][][][][][25.00][][][][][][][][]"));
 		
 		JLabel lblClient = new JLabel("Clients");
-		lblClient.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblClient.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblClient.setIcon(new ImageIcon(Clients.class.getResource("/images/gestion/client/People-64-actif.png")));
 		panelWest.add(lblClient, "cell 0 0");
 		

@@ -38,7 +38,7 @@ public class RechercherClient extends JPanel {
 		
 		JLabel lblRechercher = new JLabel("Rechercher");
 		lblRechercher.setIcon(new ImageIcon(RechercherClient.class.getResource("/images/gestion/client/User-Find-64.png")));
-		lblRechercher.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblRechercher.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblRechercher.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRechercher.setBounds(10, 11, 175, 64);
 		panelMenu.add(lblRechercher);
