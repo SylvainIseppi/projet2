@@ -14,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AjoutClient extends JPanel {
 	private JTextField textCode;
@@ -29,7 +31,7 @@ public class AjoutClient extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public AjoutClient() {
+	public AjoutClient(Clients c) {
 		setLayout(null);
 		
 		JPanel panelMenu = new JPanel();
@@ -55,6 +57,13 @@ public class AjoutClient extends JPanel {
 		panelMenu.add(btnSauvegarder);
 		
 		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.setVisible(false);
+				Clients cl = new Clients();
+				cl.setVisible(true);
+			}
+		});
 		btnAnnuler.setBackground(new Color(0, 153, 255));
 		btnAnnuler.setHorizontalAlignment(SwingConstants.LEADING);
 		btnAnnuler.setIcon(new ImageIcon(AjoutClient.class.getResource("/images/gestion/Cancel-48.png")));

@@ -13,6 +13,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RechercherClient extends JPanel {
 	private JTextField textCode;
@@ -27,7 +29,7 @@ public class RechercherClient extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public RechercherClient() {
+	public RechercherClient(Clients c) {
 		setLayout(null);
 		
 		JPanel panelMenu = new JPanel();
@@ -80,6 +82,14 @@ public class RechercherClient extends JPanel {
 		panelMenu.add(btnExport);
 		
 		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				c.setVisible(false);
+				Clients cl = new Clients();
+				cl.setVisible(true);
+			}
+		});
 		btnAnnuler.setIcon(new ImageIcon(RechercherClient.class.getResource("/images/gestion/Cancel-48.png")));
 		btnAnnuler.setHorizontalAlignment(SwingConstants.LEADING);
 		btnAnnuler.setForeground(Color.WHITE);

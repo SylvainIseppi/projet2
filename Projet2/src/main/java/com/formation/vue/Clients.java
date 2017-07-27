@@ -38,6 +38,7 @@ public class Clients extends JFrame {
 	private JTextField textNumFixe;
 	private JTextField textNumMobile;
 	private JTextField textEmail;
+	private Clients cli;
 
 	/**
 	 * Launch the application.
@@ -59,6 +60,7 @@ public class Clients extends JFrame {
 	 * Create the frame.
 	 */
 	public Clients() {
+		cli = this;
 		setTitle("Gestion des Clients");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 926, 650);
@@ -82,7 +84,7 @@ public class Clients extends JFrame {
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.setVisible(false);
-				AjoutClient ac=new AjoutClient();
+				AjoutClient ac=new AjoutClient(cli);
 				setContentPane(ac);
 				
 			}
@@ -97,7 +99,7 @@ public class Clients extends JFrame {
 		btnRechercher.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				contentPane.setVisible(false);
-				RechercherClient rc = new RechercherClient();
+				RechercherClient rc = new RechercherClient(cli);
 				setContentPane(rc);
 			}
 		});
