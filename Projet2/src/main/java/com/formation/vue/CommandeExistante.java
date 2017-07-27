@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CommandeExistante extends JPanel {
 	private JTable table;
@@ -18,12 +20,12 @@ public class CommandeExistante extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CommandeExistante() {
+	public CommandeExistante(Commande co) {
 		setLayout(null);
 		
 		JPanel panelMenu = new JPanel();
 		panelMenu.setBackground(new Color(255, 153, 0));
-		panelMenu.setBounds(10, 11, 301, 628);
+		panelMenu.setBounds(10, 11, 301, 609);
 		add(panelMenu);
 		panelMenu.setLayout(null);
 		
@@ -43,14 +45,21 @@ public class CommandeExistante extends JPanel {
 		btnSupprimer.setBounds(10, 98, 281, 46);
 		panelMenu.add(btnSupprimer);
 		
-		JButton btnAccueil = new JButton("Accueil");
-		btnAccueil.setBackground(new Color(255, 153, 0));
-		btnAccueil.setIcon(new ImageIcon(CommandeExistante.class.getResource("/images/gestion/Home-48.png")));
-		btnAccueil.setHorizontalAlignment(SwingConstants.LEADING);
-		btnAccueil.setForeground(Color.WHITE);
-		btnAccueil.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAccueil.setBounds(10, 560, 281, 57);
-		panelMenu.add(btnAccueil);
+		JButton btnRetour = new JButton("Retour");
+		btnRetour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				co.setVisible(false);
+				Commande com = new Commande();
+				com.setVisible(true);
+			}
+		});
+		btnRetour.setBackground(new Color(255, 153, 0));
+		btnRetour.setIcon(new ImageIcon(CommandeExistante.class.getResource("/images/gestion/Cancel-48.png")));
+		btnRetour.setHorizontalAlignment(SwingConstants.LEADING);
+		btnRetour.setForeground(Color.WHITE);
+		btnRetour.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnRetour.setBounds(10, 527, 281, 57);
+		panelMenu.add(btnRetour);
 		
 		JButton btnApercu = new JButton("Aper\u00E7u");
 		btnApercu.setBackground(new Color(255, 153, 0));
@@ -81,12 +90,12 @@ public class CommandeExistante extends JPanel {
 		
 		JPanel panelCommandeEx = new JPanel();
 		panelCommandeEx.setBackground(new Color(255, 255, 153));
-		panelCommandeEx.setBounds(310, 11, 630, 628);
+		panelCommandeEx.setBounds(310, 11, 630, 609);
 		add(panelCommandeEx);
 		panelCommandeEx.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 610, 547);
+		scrollPane.setBounds(10, 11, 610, 519);
 		panelCommandeEx.add(scrollPane);
 		
 		table = new JTable();
@@ -95,24 +104,24 @@ public class CommandeExistante extends JPanel {
 		JLabel lblTotalCommande = new JLabel("Total des Commandes");
 		lblTotalCommande.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTotalCommande.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblTotalCommande.setBounds(10, 583, 154, 21);
+		lblTotalCommande.setBounds(12, 552, 154, 21);
 		panelCommandeEx.add(lblTotalCommande);
 		
 		JLabel lblPrixTotal = new JLabel("0.00\u20AC");
 		lblPrixTotal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPrixTotal.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblPrixTotal.setBounds(174, 583, 123, 21);
+		lblPrixTotal.setBounds(176, 552, 123, 21);
 		panelCommandeEx.add(lblPrixTotal);
 		
 		textField = new JTextField();
-		textField.setBounds(435, 584, 185, 21);
+		textField.setBounds(435, 553, 185, 21);
 		panelCommandeEx.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblRecherche = new JLabel("Recherche");
 		lblRecherche.setIcon(new ImageIcon(CommandeExistante.class.getResource("/images/gestion/Search-32.png")));
 		lblRecherche.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblRecherche.setBounds(320, 583, 105, 21);
+		lblRecherche.setBounds(320, 552, 105, 21);
 		panelCommandeEx.add(lblRecherche);
 
 	}

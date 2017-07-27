@@ -52,6 +52,7 @@ public class Commande extends JFrame {
 	private JTextField textMontant;
 	private JTextField textDesignation;
 	private String nom;
+	private Commande comm;
 
 	public String getNom() {
 		return nom;
@@ -81,6 +82,7 @@ public class Commande extends JFrame {
 	 * Create the frame.
 	 */
 	public Commande() {
+		comm = this;
 		setTitle("Commande");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 950, 650);
@@ -103,6 +105,13 @@ public class Commande extends JFrame {
 		panelWest.add(lblCommande);
 		
 		JButton btnCommandeExistantes = new JButton("Commande existantes");
+		btnCommandeExistantes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				contentPane.setVisible(false);
+				CommandeExistante cx = new CommandeExistante(comm);
+				setContentPane(cx);
+			}
+		});
 		btnCommandeExistantes.setHorizontalAlignment(SwingConstants.LEADING);
 		btnCommandeExistantes.setIcon(new ImageIcon(Commande.class.getResource("/images/gestion/commande/Receipt-48.png")));
 		btnCommandeExistantes.setForeground(Color.WHITE);
