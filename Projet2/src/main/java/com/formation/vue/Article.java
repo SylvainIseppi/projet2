@@ -24,17 +24,18 @@ import javax.swing.JRadioButton;
 import javax.swing.JToolBar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
 
 public class Article extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField textCategorie;
+	private JTextField textCode;
+	private JTextField textDesignation;
+	private JTextField textPrixUnitaire;
+	private JTextField textQuantite;
+	private JTextField textRechercher;
 
 	/**
 	 * Launch the application.
@@ -137,13 +138,6 @@ public class Article extends JFrame {
 		contentPane.add(panelArticle, BorderLayout.CENTER);
 		panelArticle.setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 193, 710, 357);
-		panelArticle.add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(204, 255, 153));
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -151,10 +145,16 @@ public class Article extends JFrame {
 		panelArticle.add(panel);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(528, 11, 172, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		JLabel lblCode = new JLabel("Code");
+		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblCode.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCode.setBounds(47, 10, 73, 20);
+		panel.add(lblCode);
+		
+		textCode = new JTextField();
+		textCode.setBounds(130, 11, 291, 20);
+		panel.add(textCode);
+		textCode.setColumns(10);
 		
 		JLabel lblCategorie = new JLabel("Cat\u00E9gorie");
 		lblCategorie.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -162,21 +162,10 @@ public class Article extends JFrame {
 		lblCategorie.setBounds(445, 11, 73, 20);
 		panel.add(lblCategorie);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(130, 11, 291, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
-		
-		JLabel lblCode = new JLabel("Code");
-		lblCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblCode.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCode.setBounds(47, 10, 73, 20);
-		panel.add(lblCode);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(130, 42, 570, 20);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		textCategorie = new JTextField();
+		textCategorie.setBounds(528, 11, 172, 20);
+		panel.add(textCategorie);
+		textCategorie.setColumns(10);
 		
 		JLabel lblDesignation = new JLabel("D\u00E9signation");
 		lblDesignation.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -184,16 +173,25 @@ public class Article extends JFrame {
 		lblDesignation.setBounds(47, 41, 73, 20);
 		panel.add(lblDesignation);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(528, 73, 154, 20);
-		panel.add(textField_3);
-		textField_3.setColumns(10);
+		textDesignation = new JTextField();
+		textDesignation.setBounds(130, 42, 570, 20);
+		panel.add(textDesignation);
+		textDesignation.setColumns(10);
 		
-		JLabel lblEuro = new JLabel("\u20AC");
-		lblEuro.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblEuro.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEuro.setBounds(682, 73, 18, 20);
-		panel.add(lblEuro);
+		JLabel lblQuantite = new JLabel("Quantit\u00E9");
+		lblQuantite.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblQuantite.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblQuantite.setBounds(47, 72, 73, 20);
+		panel.add(lblQuantite);
+		
+		JSlider sliderQuantite = new JSlider();
+		sliderQuantite.setBounds(130, 73, 227, 20);
+		panel.add(sliderQuantite);
+		
+		textQuantite = new JTextField();
+		textQuantite.setBounds(367, 73, 54, 20);
+		panel.add(textQuantite);
+		textQuantite.setColumns(10);
 		
 		JLabel lblPrixUnitaire = new JLabel("Prix Unitaire");
 		lblPrixUnitaire.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -201,20 +199,16 @@ public class Article extends JFrame {
 		lblPrixUnitaire.setBounds(445, 72, 73, 20);
 		panel.add(lblPrixUnitaire);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(367, 73, 54, 20);
-		panel.add(textField_4);
-		textField_4.setColumns(10);
+		textPrixUnitaire = new JTextField();
+		textPrixUnitaire.setBounds(528, 73, 154, 20);
+		panel.add(textPrixUnitaire);
+		textPrixUnitaire.setColumns(10);
 		
-		JSlider slider = new JSlider();
-		slider.setBounds(130, 73, 227, 20);
-		panel.add(slider);
-		
-		JLabel lblQuantite = new JLabel("Quantit\u00E9");
-		lblQuantite.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblQuantite.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblQuantite.setBounds(47, 72, 73, 20);
-		panel.add(lblQuantite);
+		JLabel lblEuro = new JLabel("\u20AC");
+		lblEuro.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblEuro.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEuro.setBounds(682, 73, 18, 20);
+		panel.add(lblEuro);
 		
 		JToolBar toolBarArticle = new JToolBar();
 		toolBarArticle.setBackground(new Color(204, 255, 153));
@@ -240,10 +234,36 @@ public class Article extends JFrame {
 		toolBarArticle.add(btnSupprimer);
 		
 		JButton btnEffacer = new JButton("Effacer");
+		btnEffacer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textCode.setText("");
+				textCategorie.setText("");
+				textDesignation.setText("");
+				textQuantite.setText("");
+				textPrixUnitaire.setText("");
+			}
+		});
 		btnEffacer.setBackground(new Color(204, 255, 153));
 		btnEffacer.setIcon(new ImageIcon(Article.class.getResource("/images/gestion/Cancel-48.png")));
 		btnEffacer.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		toolBarArticle.add(btnEffacer);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 193, 710, 357);
+		panelArticle.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Code", "Code Cat\u00E9gorie", "D\u00E9signation", "Quantit\u00E9", "Prix Unitaire"
+			}
+		));
+		table.getColumnModel().getColumn(1).setPreferredWidth(118);
+		table.getColumnModel().getColumn(2).setPreferredWidth(125);
+		table.getColumnModel().getColumn(4).setPreferredWidth(110);
+		scrollPane.setViewportView(table);
 		
 		JLabel lblTrierPar = new JLabel("Trier par");
 		lblTrierPar.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -251,18 +271,6 @@ public class Article extends JFrame {
 		lblTrierPar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTrierPar.setBounds(53, 561, 97, 29);
 		panelArticle.add(lblTrierPar);
-		
-		textField_5 = new JTextField();
-		textField_5.setBounds(487, 566, 233, 20);
-		panelArticle.add(textField_5);
-		textField_5.setColumns(10);
-		
-		JLabel lblRechercher = new JLabel("Rechercher");
-		lblRechercher.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblRechercher.setIcon(new ImageIcon(Article.class.getResource("/images/gestion/Search-32.png")));
-		lblRechercher.setHorizontalAlignment(SwingConstants.CENTER);
-		lblRechercher.setBounds(366, 561, 111, 29);
-		panelArticle.add(lblRechercher);
 		
 		JRadioButton rdbtnCode = new JRadioButton("Code");
 		rdbtnCode.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -277,6 +285,18 @@ public class Article extends JFrame {
 		rdbtnCategorie.setBackground(new Color(204, 255, 153));
 		rdbtnCategorie.setBounds(231, 565, 89, 23);
 		panelArticle.add(rdbtnCategorie);
+		
+		JLabel lblRechercher = new JLabel("Rechercher");
+		lblRechercher.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblRechercher.setIcon(new ImageIcon(Article.class.getResource("/images/gestion/Search-32.png")));
+		lblRechercher.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRechercher.setBounds(366, 561, 111, 29);
+		panelArticle.add(lblRechercher);
+		
+		textRechercher = new JTextField();
+		textRechercher.setBounds(487, 566, 233, 20);
+		panelArticle.add(textRechercher);
+		textRechercher.setColumns(10);
 	}
 	private void fermerArticle(){
 		this.setVisible(false);
