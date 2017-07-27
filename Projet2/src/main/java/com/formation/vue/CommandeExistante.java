@@ -12,6 +12,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
 
 public class CommandeExistante extends JPanel {
 	private JTable table;
@@ -99,6 +100,17 @@ public class CommandeExistante extends JPanel {
 		panelCommandeEx.add(scrollPane);
 		
 		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Code", "Client", "Mode Paiement", "Total TTC", "Date"
+			}
+		));
+		table.getColumnModel().getColumn(1).setPreferredWidth(131);
+		table.getColumnModel().getColumn(2).setPreferredWidth(112);
+		table.getColumnModel().getColumn(3).setPreferredWidth(100);
+		table.getColumnModel().getColumn(4).setPreferredWidth(94);
 		scrollPane.setViewportView(table);
 		
 		JLabel lblTotalCommande = new JLabel("Total des Commandes");
