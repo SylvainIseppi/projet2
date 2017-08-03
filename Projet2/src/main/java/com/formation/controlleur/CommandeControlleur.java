@@ -6,13 +6,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.formation.dao.ArticleDao;
 import com.formation.dao.ClientDao;
 import com.formation.dao.CommandeDao;
-import com.mysql.fabric.xmlrpc.base.Array;
 
 public class CommandeControlleur {
 	public String[] lesClients(){
-		
+		//déclare les Dao nécessaire
+		CommandeDao co=new CommandeDao();
+		ArticleDao ad=new ArticleDao();
 		ClientDao cd=new ClientDao();
 		ResultSet resultat=cd.getAllClient();
 		//int compteur =0;
@@ -39,7 +41,7 @@ public class CommandeControlleur {
 	}
 	
 	
-	
+	// retourne la derniere commande d'un client
 	public ResultSet infoCommande(String nom){
 		int id=0;
 		ClientDao cl=new ClientDao();
@@ -69,7 +71,7 @@ public class CommandeControlleur {
 	}
 	
 	
-	
+	//creer une méthode pour retourner tout les articles d'une commande afin de les afficher dans la table
 	public Object[][] getArticlesCommande(int idCommande){
 		int taille=0;
 		int compteur=0;
@@ -102,7 +104,7 @@ public class CommandeControlleur {
 	}
 	
 	
-	
+	// permet de modifier la date pour l'afficher
 	public String modifierDate(String nom){
 		ResultSet value=infoCommande(nom);
 		if(value!=null){
@@ -119,6 +121,7 @@ public class CommandeControlleur {
 			return "";
 		}
 	}
+	// permet d'afficher le libelle de la commande
 	public String modifierLibelle(String nom){
 		ResultSet value=infoCommande(nom);
 		if(value!=null){
