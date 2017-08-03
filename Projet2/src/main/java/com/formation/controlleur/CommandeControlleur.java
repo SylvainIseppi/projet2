@@ -11,12 +11,12 @@ import com.formation.dao.ClientDao;
 import com.formation.dao.CommandeDao;
 
 public class CommandeControlleur {
+	CommandeDao co=new CommandeDao();
+	ArticleDao ad=new ArticleDao();
+	ClientDao cd=new ClientDao();
+	ResultSet resultat=cd.getAllClient();
 	public String[] lesClients(){
 		//déclare les Dao nécessaire
-		CommandeDao co=new CommandeDao();
-		ArticleDao ad=new ArticleDao();
-		ClientDao cd=new ClientDao();
-		ResultSet resultat=cd.getAllClient();
 		//int compteur =0;
 		int index=0;
 		int taille=0;
