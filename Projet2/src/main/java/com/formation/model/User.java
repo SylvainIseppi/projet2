@@ -1,4 +1,4 @@
-package com.formation.objet;
+package com.formation.model;
 
 public class User {
 	private static int role;

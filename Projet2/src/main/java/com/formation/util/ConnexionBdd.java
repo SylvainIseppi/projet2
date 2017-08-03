@@ -1,4 +1,4 @@
-package com.formation.basesql;
+package com.formation.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

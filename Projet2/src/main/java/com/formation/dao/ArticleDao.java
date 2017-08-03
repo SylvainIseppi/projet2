@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.formation.basesql.ConnexionBdd;
+import com.formation.util.ConnexionBdd;
 
 public class ArticleDao {
 	Connection connexion = ConnexionBdd.getInstance();

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-import com.formation.basesql.ConnexionBdd;
+import com.formation.util.ConnexionBdd;
 
 
 public class ClientDao {

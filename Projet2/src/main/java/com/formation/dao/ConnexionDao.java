@@ -19,8 +19,8 @@ import java.util.Locale;
 
 import javax.swing.JOptionPane;
 
-import com.formation.basesql.ConnexionBdd;
-import com.formation.objet.User;
+import com.formation.model.User;
+import com.formation.util.ConnexionBdd;
 import com.formation.vue.Accueil;
 import com.formation.vue.Connexion;
 
