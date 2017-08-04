@@ -23,8 +23,16 @@ import javax.swing.JSlider;
 import javax.swing.JRadioButton;
 import javax.swing.JToolBar;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
+
+import com.formation.controlleur.ArticleControlleur;
+import com.formation.model.ArticleModel;
+
+import javax.swing.ListSelectionModel;
+
 
 public class Article extends JFrame {
 
@@ -36,6 +44,8 @@ public class Article extends JFrame {
 	private JTextField textPrixUnitaire;
 	private JTextField textQuantite;
 	private JTextField textRechercher;
+	ArticleControlleur ac=new ArticleControlleur();
+	private int idArticle;
 
 	/**
 	 * Launch the application.
@@ -185,6 +195,7 @@ public class Article extends JFrame {
 		panel.add(lblQuantite);
 		
 		JSlider sliderQuantite = new JSlider();
+		sliderQuantite.setMaximum(500);
 		sliderQuantite.setBounds(130, 73, 227, 20);
 		panel.add(sliderQuantite);
 		
@@ -216,12 +227,28 @@ public class Article extends JFrame {
 		panel.add(toolBarArticle);
 		
 		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int codeCat=Integer.parseInt(textCode.getText());
+				String cat=textCategorie.getText();
+				String desi=textDesignation.getText();
+				int quantite=Integer.parseInt(textQuantite.getText());
+				int prixUnitaire=Integer.parseInt(textPrixUnitaire.getText());
+				ac.addArticle(codeCat, cat, desi, quantite, prixUnitaire);
+				refresh();
+				
+			}
+		});
 		btnAjouter.setBackground(new Color(204, 255, 153));
 		btnAjouter.setIcon(new ImageIcon(Article.class.getResource("/images/gestion/Add-New-48.png")));
 		btnAjouter.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		toolBarArticle.add(btnAjouter);
 		
 		JButton btnModifier = new JButton("Modifier");
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnModifier.setBackground(new Color(204, 255, 153));
 		btnModifier.setIcon(new ImageIcon(Article.class.getResource("/images/gestion/Data-Edit-48.png")));
 		btnModifier.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -251,15 +278,34 @@ public class Article extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 193, 710, 357);
 		panelArticle.add(scrollPane);
-		
+		ArticleControlleur ac=new ArticleControlleur();
+		Object[][] modele=ac.lesArticles();
 		table = new JTable();
+		table.setColumnSelectionAllowed(true);
+		table.setCellSelectionEnabled(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+			modele,
 			new String[] {
-				"Code", "Code Cat\u00E9gorie", "D\u00E9signation", "Quantit\u00E9", "Prix Unitaire"
+				"code", "Code Cat\u00E9gorie", "D\u00E9signation", "Quantit\u00E9", "Prix Unitaire"
 			}
 		));
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				int numLigne =table.getSelectedRow();
+				if(numLigne >=0 ){
+					int id=Integer.parseInt(modele[numLigne][0].toString());
+					ArticleModel a=ac.selecUnArticle(id);
+					textCode.setText(String.valueOf(a.getCodeCategorie()));
+					textCategorie.setText(String.valueOf(a.getCategorie()));
+					textDesignation.setText(String.valueOf(a.getDesignation()));
+					textPrixUnitaire.setText(String.valueOf(a.getPrixUnitaire()));
+					textQuantite.setText(String.valueOf(a.getQuantitestock()));
+					updateid(id);
+					
+				}
+			}
+		});
 		table.getColumnModel().getColumn(1).setPreferredWidth(118);
 		table.getColumnModel().getColumn(2).setPreferredWidth(125);
 		table.getColumnModel().getColumn(4).setPreferredWidth(110);
@@ -300,5 +346,13 @@ public class Article extends JFrame {
 	}
 	private void fermerArticle(){
 		this.setVisible(false);
+	}
+	private void refresh(){
+		Article a=new Article();
+		a.setVisible(true);
+		this.setVisible(false);
+	}
+	private void updateid(int id){
+		this.idArticle=id;
 	}
 }

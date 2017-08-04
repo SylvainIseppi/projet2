@@ -39,10 +39,10 @@ public class ArticleDao {
 		}
 		return null;
 	}
-	public  ResultSet delArticle(int id){
+	public  int delArticle(int id){
 		try {
 			Statement state= connexion.createStatement();
-			ResultSet resultat= state.executeQuery("DELETE FROM `article` WHERE id="+id);
+			int resultat= state.executeUpdate("DELETE FROM `article` WHERE id="+id);
 			/* Exécution d'une requête de lecture */
 	
 
@@ -52,12 +52,12 @@ public class ArticleDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return 0;
 	}
-	public   ResultSet addArticle(int codeCat,String categorie, String desi,int quantiteStock,int prixUnitaire){
+	public   int addArticle(int codeCat,String categorie, String desi,int quantiteStock,int prixUnitaire){
 		try {
 			Statement state= connexion.createStatement();
-			ResultSet resultat= state.executeQuery("INSERT INTO `article`(`codeCategorie`,`categorie`, `designation`, `quantitestock`, `prixUnitaire`) VALUES ("+codeCat+",'"+categorie+"','"+desi+"',"+quantiteStock+","+prixUnitaire+")");
+			int resultat= state.executeUpdate("INSERT INTO `article`(`codeCategorie`,`categorie`, `designation`, `quantitestock`, `prixUnitaire`) VALUES ("+codeCat+",'"+categorie+"','"+desi+"',"+quantiteStock+","+prixUnitaire+")");
 			/* Exécution d'une requête de lecture */
 	
 
@@ -67,12 +67,12 @@ public class ArticleDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return 0;
 	}
-	public   ResultSet updateArticle(int codeCat, String desi,int quantiteStock,int prixUnitaire ,int id){
+	public   int updateArticle(int codeCat, String desi,int quantiteStock,int prixUnitaire ,int id,String categorie){
 		try {
 			Statement state= connexion.createStatement();
-			ResultSet resultat= state.executeQuery("UPDATE `article` SET `codeCategorie`="+codeCat+",`designation`='"+desi+"',`quantitestock`="+quantiteStock+",`prixUnitaire`="+prixUnitaire+" WHERE id="+id+")");
+			int resultat= state.executeUpdate("UPDATE `article` SET `categorie`="+categorie+",`codeCategorie`="+codeCat+",`designation`='"+desi+"',`quantitestock`="+quantiteStock+",`prixUnitaire`="+prixUnitaire+" WHERE id="+id+")");
 			/* Exécution d'une requête de lecture */
 	
 
@@ -82,6 +82,6 @@ public class ArticleDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return 0;
 	}
 }

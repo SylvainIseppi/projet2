@@ -15,9 +15,10 @@ public class ConnexionBdd {
 		    Class.forName( "com.mysql.jdbc.Driver" );
 		    connexion = DriverManager.getConnection( url, utilisateur, mdp );
 		} catch ( ClassNotFoundException e ) {
+			System.out.println("probleme class");
 		    /* Gérer les éventuelles erreurs ici. */
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("probleme sql");
 			e.printStackTrace();
 		}
 		return connexion;

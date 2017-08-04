@@ -14,8 +14,9 @@ public class CommandeControlleur {
 	CommandeDao co=new CommandeDao();
 	ArticleDao ad=new ArticleDao();
 	ClientDao cd=new ClientDao();
-	ResultSet resultat=cd.getAllClient();
+	
 	public String[] lesClients(){
+		ResultSet resultat=cd.getAllClient();
 		//déclare les Dao nécessaire
 		//int compteur =0;
 		int index=0;
