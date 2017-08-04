@@ -290,6 +290,9 @@ public class Article extends JFrame {
 				"code", "Code Cat\u00E9gorie", "D\u00E9signation", "Quantit\u00E9", "Prix Unitaire"
 			}
 		));
+		table.getColumnModel().getColumn(1).setPreferredWidth(118);
+		table.getColumnModel().getColumn(2).setPreferredWidth(125);
+		table.getColumnModel().getColumn(4).setPreferredWidth(110);
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt){
 				int numLigne =table.getSelectedRow();
@@ -306,9 +309,6 @@ public class Article extends JFrame {
 				}
 			}
 		});
-		table.getColumnModel().getColumn(1).setPreferredWidth(118);
-		table.getColumnModel().getColumn(2).setPreferredWidth(125);
-		table.getColumnModel().getColumn(4).setPreferredWidth(110);
 		scrollPane.setViewportView(table);
 		
 		JLabel lblTrierPar = new JLabel("Trier par");

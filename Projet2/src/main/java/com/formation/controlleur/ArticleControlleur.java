@@ -11,9 +11,22 @@ public class ArticleControlleur {
 	
 	public Object[][] lesArticles() {
 		ResultSet resultat=ad.getAllArticle();
+		int taille=0;
+		try {
+			while(resultat.next()){
+				taille++;
+			}
+			while(resultat.previous()){
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		int compteur=0;
 		try {
-			Object[][] obj=new Object[resultat.getMetaData().getColumnCount()][5];
+			System.out.println(taille);
+//			Object[][] obj=new Object[resultat.getMetaData().getColumnCount()][5];
+			Object[][] obj=new Object[taille][5];
 			
 			while(resultat.next()){
 				obj[compteur]=new Object[] {resultat.getInt("id"),resultat.getInt("codeCategorie"),resultat.getString("designation"),resultat.getInt("quantitestock"),resultat.getInt("prixUnitaire")};
