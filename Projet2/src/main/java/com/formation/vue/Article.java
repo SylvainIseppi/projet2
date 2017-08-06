@@ -197,7 +197,7 @@ public class Article extends JFrame {
 		JSlider sliderQuantite = new JSlider();
 		sliderQuantite.setMaximum(500);
 		sliderQuantite.setBounds(130, 73, 227, 20);
-		panel.add(sliderQuantite);
+		panel.add(sliderQuantite);	
 		
 		textQuantite = new JTextField();
 		textQuantite.setBounds(367, 73, 54, 20);
@@ -209,6 +209,7 @@ public class Article extends JFrame {
 		lblPrixUnitaire.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblPrixUnitaire.setBounds(445, 72, 73, 20);
 		panel.add(lblPrixUnitaire);
+		
 		
 		textPrixUnitaire = new JTextField();
 		textPrixUnitaire.setBounds(528, 73, 154, 20);

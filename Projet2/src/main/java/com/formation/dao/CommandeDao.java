@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 import com.formation.util.ConnexionBdd;
 public class CommandeDao {
@@ -67,35 +68,23 @@ public class CommandeDao {
 		}
 		return null;
 	}
-	public   ResultSet delCommande(int id){
+	public   void delCommande(int id){
 		try {
 			Statement state= connexion.createStatement();
-			ResultSet resultat= state.executeQuery("DELETE FROM `commandecreer` WHERE id="+id+")");
-			/* Exécution d'une requête de lecture */
-	
-
-			/* Récupération des données du résultat de la requête de lecture */
-			return resultat;
+			int resultat= state.executeUpdate("DELETE FROM `commandecreer` WHERE id="+id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
 	}
-	public   ResultSet updateCommande(int id, int idArticle,int quantite){
+	public   void updateCommande(int id, int idArticle,int quantite){
 		try {
 			Statement state= connexion.createStatement();
-			ResultSet resultat= state.executeQuery("UPDATE `commandecreer` SET `idArticle`="+idArticle+",`quantité`="+quantite+" WHERE id="+id+")");
-			/* Exécution d'une requête de lecture */
-	
-
-			/* Récupération des données du résultat de la requête de lecture */
-			return resultat;
+			int resultat= state.executeUpdate("UPDATE `commandecreer` SET `idArticle`="+idArticle+",`quantité`="+quantite+" WHERE id="+id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
 	}
 	public   ResultSet addArticledansCommande(int idCommande, int idArticle,int quantite){
 		try {
@@ -108,15 +97,24 @@ public class CommandeDao {
 		}
 		return null;
 	}
-	public   ResultSet delArticledansCommande(int idArticle){
+	public   void delArticledansCommande(int idArticle){
 		try {
 			Statement state= connexion.createStatement();
-			ResultSet resultat= state.executeQuery("DELETE FROM `commandecreer` where id="+idArticle+")");
-			return resultat;
+			int resultat= state.executeUpdate("DELETE FROM `commandecreer` where id="+idArticle);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+	}
+	public void addCommande(String libelle, int idclient,Date datecommande ){
+		Statement state;
+		try {
+			state = connexion.createStatement();
+			int resultat= state.executeUpdate("INSERT INTO `commande`(`libelle`, `idclient`, `datecommande`) VALUES ("+libelle+","+idclient+","+datecommande+")");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
