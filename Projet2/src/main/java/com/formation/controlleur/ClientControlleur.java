@@ -62,7 +62,7 @@ public class ClientControlleur {
 
 	public void updateClient(int id, boolean carte, String prenom, String nom, String adresse, int fixe, int mobile,
 			String mail, String remarque) {
-		int resultat = cd.UpdateClient(id, carte, prenom, nom, adresse, fixe, mobile, mail, remarque);
+			cd.UpdateClient(id, carte, prenom, nom, adresse, fixe, mobile, mail, remarque);
 	}
 	
 	public void DelClient(int id){

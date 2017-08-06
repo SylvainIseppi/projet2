@@ -138,4 +138,40 @@ public class CommandeControlleur {
 			return "pas de commande";
 		}
 	}
+	public Object[][] getLesCommandes(){
+		int taille=0;
+		int compteur=0;
+		ResultSet resultat=co.getAllCommande();
+		try {
+			while(resultat.next()){
+				taille++;
+			}
+			while(resultat.previous()){
+				
+			}
+			
+			Object[][] obj=new Object[taille][5];
+			while(resultat.next()){
+				int prix=0;
+				ResultSet prixTotal=co.detailCommande(resultat.getInt("id"));
+				while(prixTotal.next()){
+					prix+=(prixTotal.getInt("quantité")*prixTotal.getInt("prixUnitaire"));
+				}
+				obj[compteur][0]=resultat.getString("libelle");
+				obj[compteur][1]=resultat.getInt("idClient");
+				obj[compteur][2]=resultat.getString("modePayement");
+				obj[compteur][3]=prix;
+				obj[compteur][4]=resultat.getDate("datecommande");
+				compteur++;
+			}
+			return obj;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public void delCommande(String libelle){
+		co.delCommande(libelle);
+	}
 }

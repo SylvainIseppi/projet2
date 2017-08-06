@@ -58,7 +58,6 @@ public class CommandeDao {
 	public   ResultSet detailCommande(int id){
 		try {
 			Statement state= connexion.createStatement();
-			System.out.println("select * from commandecreer,article  where idcommande="+id+" and article.id=commandecreer.idarticle");
 			ResultSet resultat= state.executeQuery("select * from commandecreer,article  where idcommande="+id+" and article.id=commandecreer.idarticle");
 			/* Exécution d'une requête de lecture */
 			return resultat;
@@ -68,10 +67,10 @@ public class CommandeDao {
 		}
 		return null;
 	}
-	public   void delCommande(int id){
+	public   void delCommande(String libelle){
 		try {
 			Statement state= connexion.createStatement();
-			int resultat= state.executeUpdate("DELETE FROM `commandecreer` WHERE id="+id);
+			int resultat= state.executeUpdate("DELETE FROM `commande` WHERE libelle='"+libelle+"'");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

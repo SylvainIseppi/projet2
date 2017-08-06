@@ -11,13 +11,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
+
+import com.formation.controlleur.CommandeControlleur;
+import com.formation.model.ArticleModel;
 
 public class CommandeExistante extends JPanel {
 	private JTable table;
 	private JTextField textField;
-
+	private CommandeControlleur cc=new CommandeControlleur();
+	String libelleCommande;
 	/**
 	 * Create the panel.
 	 */
@@ -38,6 +44,11 @@ public class CommandeExistante extends JPanel {
 		panelMenu.add(lblCommandes);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cc.delCommande(libelleCommande);
+			}
+		});
 		btnSupprimer.setHorizontalAlignment(SwingConstants.LEADING);
 		btnSupprimer.setBackground(new Color(255, 153, 0));
 		btnSupprimer.setIcon(new ImageIcon(CommandeExistante.class.getResource("/images/gestion/Garbage-Open-48.png")));
@@ -98,15 +109,27 @@ public class CommandeExistante extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 610, 519);
 		panelCommandeEx.add(scrollPane);
-		
+		Object[][] modele=cc.getLesCommandes();
 		table = new JTable();
+		table.setColumnSelectionAllowed(true);
+		table.setCellSelectionEnabled(true);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+			modele,
 			new String[] {
 				"Code", "Client", "Mode Paiement", "Total TTC", "Date"
 			}
 		));
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				int numLigne =table.getSelectedRow();
+				System.out.println(numLigne);
+				if(numLigne >=0 ){
+					String libelle=modele[numLigne][0].toString();
+					updateLibelle(libelle);
+				}
+			}
+		});
+		
 		table.getColumnModel().getColumn(1).setPreferredWidth(131);
 		table.getColumnModel().getColumn(2).setPreferredWidth(112);
 		table.getColumnModel().getColumn(3).setPreferredWidth(100);
@@ -136,5 +159,9 @@ public class CommandeExistante extends JPanel {
 		lblRecherche.setBounds(320, 552, 105, 21);
 		panelCommandeEx.add(lblRecherche);
 
+	}
+	public void updateLibelle(String libelle){
+		this.libelleCommande=libelle;
+		System.out.println(this.libelleCommande);
 	}
 }

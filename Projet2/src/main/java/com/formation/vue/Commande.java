@@ -123,6 +123,11 @@ public class Commande extends JFrame {
 		panelWest.add(btnCommandeExistantes);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnSupprimer.setBackground(new Color(255, 153, 0));
 		btnSupprimer.setHorizontalAlignment(SwingConstants.LEADING);
 		btnSupprimer.setIcon(new ImageIcon(Commande.class.getResource("/images/gestion/Cancel-48.png")));
