@@ -72,7 +72,7 @@ public class ArticleDao {
 	public   int updateArticle(int codeCat, String desi,int quantiteStock,int prixUnitaire ,int id,String categorie){
 		try {
 			Statement state= connexion.createStatement();
-			int resultat= state.executeUpdate("UPDATE `article` SET `categorie`="+categorie+",`codeCategorie`="+codeCat+",`designation`='"+desi+"',`quantitestock`="+quantiteStock+",`prixUnitaire`="+prixUnitaire+" WHERE id="+id+")");
+			int resultat= state.executeUpdate("UPDATE `article` SET `categorie`="+categorie+",`codeCategorie`="+codeCat+",`designation`='"+desi+"',`quantitestock`="+quantiteStock+",`prixUnitaire`="+prixUnitaire+" WHERE id="+id);
 			/* Exécution d'une requête de lecture */
 	
 
