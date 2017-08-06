@@ -21,11 +21,18 @@ import javax.swing.JEditorPane;
 import javax.swing.border.LineBorder;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
+
+import com.formation.controlleur.ClientControlleur;
+import com.formation.model.ArticleModel;
+import com.formation.model.ClientModel;
 
 public class Clients extends JFrame {
 
@@ -40,6 +47,8 @@ public class Clients extends JFrame {
 	private JTextField textNumMobile;
 	private JTextField textEmail;
 	private Clients cli;
+	ClientControlleur cc = new ClientControlleur();
+	private int idClient;
 
 	/**
 	 * Launch the application.
@@ -301,11 +310,13 @@ public class Clients extends JFrame {
 		JScrollPane scrollClients = new JScrollPane();
 		scrollClients.setBounds(10, 308, 706, 262);
 		panelClients.add(scrollClients);
-		
+		ClientControlleur cc = new ClientControlleur();
+		Object[][] modele = cc.lesClients();
 		tableClients = new JTable();
-		tableClients.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
+		tableClients.setColumnSelectionAllowed(true);
+		tableClients.setCellSelectionEnabled(true);
+		tableClients.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tableClients.setModel(new DefaultTableModel(modele,
 			new String[] {
 				"Code", "Nom", "Pr\u00E9nom", "Carte Fid\u00E9lit\u00E9", "Date Cr\u00E9ation"
 			}
@@ -314,6 +325,25 @@ public class Clients extends JFrame {
 		tableClients.getColumnModel().getColumn(2).setPreferredWidth(106);
 		tableClients.getColumnModel().getColumn(3).setPreferredWidth(84);
 		tableClients.getColumnModel().getColumn(4).setPreferredWidth(93);
+		tableClients.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt){
+				int numLigne =tableClients.getSelectedRow();
+				if(numLigne >=0 ){
+					int id=Integer.parseInt(modele[numLigne][0].toString());
+					ClientModel c=cc.selecUnClient(id);
+					textCode.setText(String.valueOf(c.getId()));
+					textCreeLe.setText(String.valueOf(c.getDateCréation()));
+					textPrenom.setText(String.valueOf(c.getPrénom()));
+					textNom.setText(String.valueOf(c.getNom()));
+					textAdresse.setText(String.valueOf(c.getAdresse()));
+					textNumFixe.setText(String.valueOf(c.getFixe()));
+					textNumMobile.setText(String.valueOf(c.getMobile()));
+					textEmail.setText(String.valueOf(c.getEmail()));
+					updateid(id);
+					
+				}
+			}
+		});
 		scrollClients.setViewportView(tableClients);
 		
 		JLabel lblListe = new JLabel("Trier la liste par");
@@ -328,5 +358,9 @@ public class Clients extends JFrame {
 	}
 	private void fermerClient(){
 		this.setVisible(false);
+	}
+	
+	private void updateid(int id){
+		this.idClient=id;
 	}
 }
