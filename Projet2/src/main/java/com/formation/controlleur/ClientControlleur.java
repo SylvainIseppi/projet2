@@ -51,7 +51,7 @@ public class ClientControlleur {
 
 		try {
 			while (resultat.next()) {
-				return new ClientModel(id, resultat.getInt("fixe"), resultat.getInt("mobile"), resultat.getString("nom"), resultat.getString("prénom"), resultat.getString("adresse"), resultat.getString("dateCréation"), resultat.getString("email"), resultat.getString("remarques"), resultat.getBoolean("carteFidélité"));
+				return new ClientModel(id, resultat.getInt("fixe"), resultat.getInt("mobile"), resultat.getString("nom"), resultat.getString("prenom"), resultat.getString("adresse"), resultat.getString("dateCreation"), resultat.getString("email"), resultat.getString("remarques"), resultat.getBoolean("cartedefidélité"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

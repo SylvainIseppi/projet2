@@ -239,39 +239,6 @@ public class Commande extends JFrame {
 		comboNomClient.setModel(new DefaultComboBoxModel(c.lesClients()));
 		comboNomClient.setToolTipText("");
 		comboNomClient.setBounds(211, 54, 190, 20);
-		comboNomClient.addItemListener(
-				new ItemListener() {
-					
-					@Override
-					public void itemStateChanged(ItemEvent e) {
-						String nom="";
-						int idcommande=0;
-						  if(e.getStateChange()==ItemEvent.SELECTED)
-		                    {
-		                        nom=comboNomClient.getSelectedItem().toString();
-		                        CommandeControlleur cc=new CommandeControlleur();
-		                        if(cc.infoCommande(nom)!=null){
-		                        	try {
-										idcommande=cc.infoCommande(nom).getInt("id");
-										System.out.println(idcommande);
-									} catch (SQLException e1) {
-										// TODO Auto-generated catch block
-										e1.printStackTrace();
-									}
-		                        }
-		                       textCommandeencours.setText(cc.modifierLibelle(nom));
-		                       textDate.setText(cc.modifierDate(nom));
-		                       
-//		                       table.setModel(new DefaultTableModel(
-//			                   			cc.getArticlesCommande(idcommande),
-//			                   			new String[] {
-//			                   				"code", "Code Categorie", "Designation", "Quantite", "Prix Unitaire", "Total"
-//			                   			}
-//			                   		));
-		                    }
-					}
-				}
-		);
 		
 		panelInfos.add(comboNomClient);
 		

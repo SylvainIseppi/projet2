@@ -328,6 +328,7 @@ public class Clients extends JFrame {
 		tableClients.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt){
 				int numLigne =tableClients.getSelectedRow();
+				System.out.println(numLigne);
 				if(numLigne >=0 ){
 					int id=Integer.parseInt(modele[numLigne][0].toString());
 					ClientModel c=cc.selecUnClient(id);
