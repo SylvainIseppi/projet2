@@ -134,6 +134,12 @@ public class Clients extends JFrame {
 		panelWest.add(btnModifier, "cell 0 3");
 		
 		JButton btnSupprimer = new JButton("Supprimer    ");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cc.DelClient(idClient);
+				refresh();
+			}
+		});
 		btnSupprimer.setIcon(new ImageIcon(Clients.class.getResource("/images/gestion/Garbage-Open-48.png")));
 		btnSupprimer.setBackground(new Color(0, 153, 255));
 		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -354,6 +360,12 @@ public class Clients extends JFrame {
 		panelClients.add(comboListe);
 	}
 	private void fermerClient(){
+		this.setVisible(false);
+	}
+	
+	private void refresh(){
+		Clients c = new Clients();
+		c.setVisible(true);
 		this.setVisible(false);
 	}
 	
