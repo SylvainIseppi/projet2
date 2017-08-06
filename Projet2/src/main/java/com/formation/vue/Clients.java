@@ -318,13 +318,9 @@ public class Clients extends JFrame {
 		tableClients.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableClients.setModel(new DefaultTableModel(modele,
 			new String[] {
-				"Code", "Nom", "Pr\u00E9nom", "Carte Fid\u00E9lit\u00E9", "Date Cr\u00E9ation"
+				"Code", "Date Cr\u00E9ation", "Carte Fid\u00E9lit\u00E9", "Pr\u00E9nom", "Nom"
 			}
 		));
-		tableClients.getColumnModel().getColumn(1).setPreferredWidth(106);
-		tableClients.getColumnModel().getColumn(2).setPreferredWidth(106);
-		tableClients.getColumnModel().getColumn(3).setPreferredWidth(84);
-		tableClients.getColumnModel().getColumn(4).setPreferredWidth(93);
 		tableClients.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt){
 				int numLigne =tableClients.getSelectedRow();
