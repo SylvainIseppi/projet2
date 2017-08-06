@@ -76,7 +76,7 @@ public class ClientDao {
 		}
 		return null;
 	}
-	public  void UpdateClient(int id,boolean carte,String prenom,String nom,String adresse,int fixe,int mobile,String mail,String remarque){
+	public  int UpdateClient(int id,boolean carte,String prenom,String nom,String adresse,int fixe,int mobile,String mail,String remarque){
 		Date date =new Date();
 			
 		try {
@@ -88,6 +88,7 @@ public class ClientDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return 0;
 	}
 	public ResultSet searchUnClient(String nom){
 		try {
