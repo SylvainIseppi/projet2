@@ -56,4 +56,10 @@ public class ArticleControlleur {
 	public void addArticle(int codeCat,String categorie,String desi,int quantiteStock,int prixUnitaire){
 		ad.addArticle(codeCat, categorie, desi, quantiteStock, prixUnitaire);
 	}
+	public void delArticle(int id){
+		ad.delArticle(id);
+	}
+	public void UpdateArticle(int id, int codeCat,String desi,int quantiteStock,int prixUnitaire,String categorie){
+		ad.updateArticle(codeCat, desi, quantiteStock, prixUnitaire, id, categorie);
+	}
 }

@@ -247,6 +247,13 @@ public class Article extends JFrame {
 		JButton btnModifier = new JButton("Modifier");
 		btnModifier.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int codeCat=Integer.parseInt(textCode.getText());
+				String cat=textCategorie.getText();
+				String desi=textDesignation.getText();
+				int quantite=Integer.parseInt(textQuantite.getText());
+				int prixUnitaire=Integer.parseInt(textPrixUnitaire.getText());
+				ac.updateArticle(idArticle, codeCat, quantite, prixUnitaire, desi, cat);
+				refresh();
 			}
 		});
 		btnModifier.setBackground(new Color(204, 255, 153));
@@ -255,6 +262,12 @@ public class Article extends JFrame {
 		toolBarArticle.add(btnModifier);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ac.delArticle(idArticle);
+				refresh();
+			}
+		});
 		btnSupprimer.setBackground(new Color(204, 255, 153));
 		btnSupprimer.setIcon(new ImageIcon(Article.class.getResource("/images/gestion/Garbage-Open-48.png")));
 		btnSupprimer.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -299,8 +312,8 @@ public class Article extends JFrame {
 				if(numLigne >=0 ){
 					int id=Integer.parseInt(modele[numLigne][0].toString());
 					ArticleModel a=ac.selecUnArticle(id);
-					textCode.setText(String.valueOf(a.getCodeCategorie()));
-					textCategorie.setText(String.valueOf(a.getCategorie()));
+					textCode.setText(String.valueOf(a.getId()));
+					textCategorie.setText(String.valueOf(a.getCodeCategorie()));
 					textDesignation.setText(String.valueOf(a.getDesignation()));
 					textPrixUnitaire.setText(String.valueOf(a.getPrixUnitaire()));
 					textQuantite.setText(String.valueOf(a.getQuantitestock()));
