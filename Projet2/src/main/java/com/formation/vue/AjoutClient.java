@@ -48,6 +48,11 @@ public class AjoutClient extends JPanel {
 		panelMenu.add(lblAjout);
 		
 		JButton btnSauvegarder = new JButton("Sauvegarder");
+		btnSauvegarder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnSauvegarder.setHorizontalAlignment(SwingConstants.LEADING);
 		btnSauvegarder.setIcon(new ImageIcon(AjoutClient.class.getResource("/images/gestion/Save-48.png")));
 		btnSauvegarder.setBackground(new Color(0, 153, 255));
