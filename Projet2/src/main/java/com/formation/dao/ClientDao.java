@@ -51,7 +51,7 @@ public class ClientDao {
 			
 		try {
 			Statement state= connexion.createStatement();
-			int resultat= state.executeUpdate("INSERT INTO `client`(`dateCreation`, `cartedefidélité`, `prenom`, `nom`, `adresse`, `fixe`, `mobile`, `email`, `remarques`) VALUES ('"+new SimpleDateFormat("yyyy-MM-dd").format(date)+"',"+carte+","+prenom+","+nom+","+adresse+","+fixe+","+mobile+","+mail+","+remarque+") ");
+			int resultat= state.executeUpdate("INSERT INTO `client`(`dateCreation`, `cartedefidélité`, `prenom`, `nom`, `adresse`, `fixe`, `mobile`, `email`, `remarques`) VALUES ('"+new SimpleDateFormat("yyyy-MM-dd").format(date)+"',"+carte+",'"+prenom+"','"+nom+"','"+adresse+"',"+fixe+","+mobile+",'"+mail+"','"+remarque+"')");
 			/* Exécution d'une requête de lecture */
 			/* Récupération des données du résultat de la requête de lecture */
 		} catch (SQLException e) {

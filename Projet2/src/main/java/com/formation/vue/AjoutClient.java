@@ -8,6 +8,10 @@ import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
+
+import com.formation.controlleur.ClientControlleur;
+import com.formation.vue.Clients;
+
 import javax.swing.border.LineBorder;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -27,6 +31,9 @@ public class AjoutClient extends JPanel {
 	private JTextField textNumFixe;
 	private JTextField textNumMobile;
 	private JTextField textEmail;
+	private JCheckBox chckbxCarteDeFidelite;
+	private JTextArea textAreaRemarques;
+	ClientControlleur cc = new ClientControlleur();
 
 	/**
 	 * Create the panel.
@@ -50,7 +57,15 @@ public class AjoutClient extends JPanel {
 		JButton btnSauvegarder = new JButton("Sauvegarder");
 		btnSauvegarder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				boolean CarteFidélité = chckbxCarteDeFidelite.isSelected();
+				String Prénom = textPrenom.getText();
+				String Nom = textNom.getText();
+				String adresse = textAdresse.getText();
+				int fixe = Integer.parseInt(textNumFixe.getText());
+				int mobile = Integer.parseInt(textNumMobile.getText());
+				String mail = textEmail.getText();
+				String remarque = textAreaRemarques.getText();
+				cc.AjoutClient(CarteFidélité, Prénom, Nom, adresse, fixe, mobile, mail, remarque);
 			}
 		});
 		btnSauvegarder.setHorizontalAlignment(SwingConstants.LEADING);
@@ -128,7 +143,7 @@ public class AjoutClient extends JPanel {
 		lblCreele.setBounds(301, 29, 73, 23);
 		panelClient.add(lblCreele);
 		
-		JCheckBox chckbxCarteDeFidelite = new JCheckBox("Carte de Fid\u00E9lit\u00E9");
+		chckbxCarteDeFidelite = new JCheckBox("Carte de Fid\u00E9lit\u00E9");
 		chckbxCarteDeFidelite.setHorizontalAlignment(SwingConstants.CENTER);
 		chckbxCarteDeFidelite.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		chckbxCarteDeFidelite.setBackground(new Color(102, 204, 255));
@@ -256,7 +271,7 @@ public class AjoutClient extends JPanel {
 		scrollRemarques.setBounds(10, 26, 673, 253);
 		panelRemarques.add(scrollRemarques);
 		
-		JTextArea textAreaRemarques = new JTextArea();
+		textAreaRemarques = new JTextArea();
 		scrollRemarques.setViewportView(textAreaRemarques);
 
 	}
